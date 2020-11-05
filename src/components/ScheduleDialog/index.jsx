@@ -80,16 +80,17 @@ class ScheduleDialog extends React.Component {
 
     handleSchedule = () => {
 
-        const { transfer, incoming, schedule, name } = this.state;
+        const { transfer, incoming, schedule, name, queue } = this.state;
 
         if(!name) {
             alert("You need to add a friendly name");
             return;
         }
 
-        if(!get(schedule, "range", false)) {
 
-            alert("You need to add a schedule"); 
+        if(!queue) {
+
+            alert("You need to choose a queue to block");
             return;
 
         }
@@ -103,7 +104,7 @@ class ScheduleDialog extends React.Component {
 
         if(incoming && incoming.active){
 
-            if(get(incoming, "fallbackQueues", []).length === 0) {
+            if((get(incoming, "fallbackQueues", []) || []).length === 0) {
                 alert("You need to add at least one value to fallback queues in incoming");
                 return;
             }
@@ -112,15 +113,23 @@ class ScheduleDialog extends React.Component {
 
         if(transfer && transfer.active){
 
-            if(get(transfer, "fallbackQueues", []).length === 0) {
+            if((get(transfer, "fallbackQueues", []) || []).length === 0) {
                 alert("You need to add at least one value to fallback queues in transfer");
                 return;
             }
 
-            if(get(transfer, "originationQueues", []).length === 0) {
+            if((get(transfer, "originationQueues", []) || []).length === 0) {
                 alert("You need to add at least one value to origination queues in transfer");
                 return;
             }
+        }
+
+
+        if(!get(schedule, "range", false)) {
+
+            alert("You need to add a schedule"); 
+            return;
+
         }
 
         const obj =  { ...this.state, created: {

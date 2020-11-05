@@ -3,7 +3,7 @@ import "./styles.css";
 import { connect } from 'react-redux';
 import BlockQueueSelectorPanelContent from '../BlockQueueSelectorPanelContent';
 
-class QueueSelectorPanel extends React.Component {
+class BlockQueueSelectorPanel extends React.Component {
 
     render () {
         const { isHidden } = this.props;
@@ -20,8 +20,8 @@ const mapStateToProps = state => {
 
     const workerAttributes = state.flex.worker.attributes;
     const componentViewStates = state.flex.view.componentViewStates;
-    const QueueSelectorPanelState = componentViewStates && componentViewStates.QueueSelectorPanel;
-    const isHidden = QueueSelectorPanelState && QueueSelectorPanelState.isHidden;
+    const BlockQueueSelectorPanelState = componentViewStates && componentViewStates.BlockQueueSelectorPanel;
+    const isHidden = BlockQueueSelectorPanelState && BlockQueueSelectorPanelState.isHidden;
 
     return {
         isHidden,
@@ -30,4 +30,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps)(QueueSelectorPanel);
+export default connect(mapStateToProps)(BlockQueueSelectorPanel);

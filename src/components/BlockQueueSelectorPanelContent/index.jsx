@@ -46,7 +46,7 @@ class QueueSelectorPanelContent extends React.Component {
 
     handleCloseClick = () => {
         Flex.Actions.invokeAction('SetComponentState', {
-            name: 'QueueSelectorPanel',
+            name: 'BlockQueueSelectorPanel',
             state: { isHidden: !this.props.isHidden }
         });
     }
@@ -142,6 +142,8 @@ class QueueSelectorPanelContent extends React.Component {
 
                 }
 
+                return "not active";
+
             }
             
         }
@@ -228,7 +230,7 @@ class QueueSelectorPanelContent extends React.Component {
                                 return (
                                     <div className="scheduleItem" key={key}>
                                         <div className="scheduleItemFirstPart">
-                                            {!schedule.removed && <StyledIconButton onClick={() => this.removeSchedule(key, schedule)}>
+                                            {!schedule.removed && status !== "out of range" && <StyledIconButton onClick={() => this.removeSchedule(key, schedule)}>
                                                 <Flex.Icon icon="Close"/>
                                             </StyledIconButton>}
                                             <StyledIconButton className="scheduleItemTitle" onClick={() => this.setState({ showDialog: true, selectedInfo: schedule })}>

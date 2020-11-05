@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 class QueueSelector extends React.Component {
 
-    toggleQueueSelectorPanel = () => {
+    toggleBlockQueueSelectorPanel = () => {
         
         Flex.Actions.invokeAction('SetComponentState', {
-            name: 'QueueSelectorPanel',
+            name: 'BlockQueueSelectorPanel',
             state: { isHidden: !this.props.isHidden }
         });
 
@@ -16,7 +16,7 @@ class QueueSelector extends React.Component {
 
     componentDidMount() {
         Flex.Actions.invokeAction('SetComponentState', {
-            name: 'QueueSelectorPanel',
+            name: 'BlockQueueSelectorPanel',
             state: { isHidden: (typeof this.props.isHidden === "undefined") ? true : this.props.isHidden  }
         });
     }
@@ -25,7 +25,7 @@ class QueueSelector extends React.Component {
 
         return (
             <div className="wrapper">
-                <div className="tray" onClick={this.toggleQueueSelectorPanel}>
+                <div className="tray" onClick={this.toggleBlockQueueSelectorPanel}>
                     <Flex.Icon icon="TasksSmall"  />
                 </div>
             </div>
@@ -37,8 +37,8 @@ class QueueSelector extends React.Component {
 
 const mapStateToProps = state => {
     const componentViewStates = state.flex.view.componentViewStates;
-    const QueueSelectorPanelState = componentViewStates && componentViewStates.QueueSelectorPanel;
-    const isHidden = QueueSelectorPanelState && QueueSelectorPanelState.isHidden;
+    const BlockQueueSelectorPanelState = componentViewStates && componentViewStates.BlockQueueSelectorPanel;
+    const isHidden = BlockQueueSelectorPanelState && BlockQueueSelectorPanelState.isHidden;
 
     return {
         isHidden
