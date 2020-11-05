@@ -1,0 +1,22 @@
+{
+  "name": "plugin-queue-block",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "flex-plugin pre-script-check"
+  },
+  "dependencies": {
+    "flex-plugin-scripts": "^4.3.4-beta.0",
+    "moment-timezone": "^0.5.31",
+    "react": "16.5.2",
+    "react-datetime": "^3.0.4",
+    "react-datetime-range-picker": "^3.0.0",
+    "react-dom": "16.5.2",
+    "react-input-mask": "^2.0.4",
+    "react-select": "^3.1.0",
+    "twilio-sync": "^0.12.4"
+  },
+  "devDependencies": {
+    "@twilio/flex-ui": "^1"
+  }
+}

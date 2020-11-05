@@ -1,0 +1,59 @@
+.alertBox {
+    padding: 5px;
+    border: 1px solid #CCC;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #333;
+}
+
+.scheduleForm{
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+}
+
+.disabledScheduleForm{
+    margin-top: 20px;
+}
+
+.dateRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0 15px 0;
+}
+
+.dateInputBox {
+    margin-right: 10px;
+}
+
+.dateInput {
+    width: 40px;
+    text-align: center;
+    height: 15px;
+    font-size: 16px;
+}
+
+.scheduleWrapperDisabled { 
+    margin: 0;
+}
+
+.checkWrapper {
+    border-bottom: 1px solid #CCC;
+    margin: 20px 0;
+    padding-bottom: 20px;
+}
+
+.timezoneWarning {
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.queueSelectorWrapper{
+    margin-top: 15px;
+}
+
+.dialogWrapper{
+    min-width: 300px;
+    padding: 20px;
+}
