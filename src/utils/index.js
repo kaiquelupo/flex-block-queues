@@ -78,13 +78,6 @@ export const getSchedulesByQueue = (schedules) => {
 
 }
 
-export const getSchedulesByKey = (items) => {
-
-    return items.reduce((pr, cur) => ({ ...pr, [cur.key]: cur.descriptor.data }), {})
-
-}
-
-
 export const ID =  () => {
     // Math.random should be unique because of its seeding algorithm.
     // Convert it to base 36 (numbers + letters), and grab the first 9 characters

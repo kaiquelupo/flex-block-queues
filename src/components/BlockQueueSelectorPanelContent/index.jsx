@@ -8,7 +8,6 @@ import moment from 'moment-timezone';
 import ScheduleDialog from '../ScheduleDialog';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { get } from 'lodash';
 
 var syncClient = new SyncClient(Manager.getInstance().user.token);
 
@@ -33,6 +32,8 @@ const styles = {
         height: "20px"
     }
   };
+
+let removed = {};
 
 class QueueSelectorPanelContent extends React.Component {
 
@@ -66,7 +67,7 @@ class QueueSelectorPanelContent extends React.Component {
             date: moment().format()
         }});
       });
-      
+
     }
 
     componentDidMount() {
@@ -96,20 +97,14 @@ class QueueSelectorPanelContent extends React.Component {
 
             }.bind(this));
 
-            // map.on('itemRemoved', function (item) {
-                
-            //     const newSchedules = { ...this.state.schedules };
+            map.on('itemRemoved', function (item) {
 
-            //     console.log(item);
-            //     console.log(item.key);
-            //     console.log(this.state.schedules);
-            //     console.log(newSchedules);
+                removed = {
+                    ...removed,
+                    [item.key]: true
+                }
 
-            //     newSchedules[item.key].removed = true;
-
-            //     this.setState({ schedules: newSchedules });
-
-            // }.bind(this));
+            }.bind(this));
 
         }.bind(this));
 
@@ -154,11 +149,31 @@ class QueueSelectorPanelContent extends React.Component {
         return "removed";
     }
 
+    getSchedulesWithRemovedContext = () => {
+
+        const { schedules } = this.state;
+
+        return Object.keys(schedules).reduce((pr, cur) => {
+            if(removed[cur]) {
+                return { 
+                    ...pr,
+                    [cur]: { 
+                        ...schedules[cur],
+                        removed: true
+                    }
+                }
+            }
+
+            return { ...pr, [cur]: schedules[cur] };
+        }, {});
+    }
+
     render () {
 
-        const { schedules, showQueueSidSchedules } = this.state;
+        const { showQueueSidSchedules } = this.state;
         const { classes } = this.props;
 
+        const schedules = this.getSchedulesWithRemovedContext();
         const schedulesByQueue = getSchedulesByQueue(schedules);
 
         return (
