@@ -60,19 +60,13 @@ class QueueSelectorPanelContent extends React.Component {
 
    removeSchedule = (key, item) => {
 
-    //   syncClient.map('queue-block-schedules').then(function(map) {
-    //     map.update(key, {...item, removed: {
-    //         worker: Flex.Manager.getInstance().workerClient.attributes.email,
-    //         date: moment().format()
-    //     }});
-    //   });
-
-     syncClient.map('queue-block-schedules').then(function(map) {
-        map.remove(key).then(function() {
-          console.log('item deleted');
-        });
+      syncClient.map('queue-block-schedules').then(function(map) {
+        map.update(key, {...item, removed: {
+            worker: Flex.Manager.getInstance().workerClient.attributes.email,
+            date: moment().format()
+        }});
       });
-
+      
     }
 
     componentDidMount() {

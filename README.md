@@ -5,5 +5,5 @@ This plugin allows admins and supervisors to tag queues as blocked during a sche
 Every time we verify if a queue is blocked for incoming calls, we also check if there are removed schedules or out of range schedules that once blocked any queue (incoming or transfer). If so, these schedules are removed from the sync map and their information sent to a Flex Insights Report. This strategy follows a "garbage collector" concept in order to replace the use of a CRON job to check date making it possible to use Twilio Functions without the need of third-party systems.     
 
 <p align="center">
-    <img src="screenshots/example_2.png?raw=true" width="600" >
+    <img src="screenshots/example_1.png?raw=true" width="600" >
 </p>
