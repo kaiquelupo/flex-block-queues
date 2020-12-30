@@ -34,7 +34,8 @@ export default class QueueBlockPlugin extends FlexPlugin {
     if(roles && (roles.includes("admin") || roles.includes("supervisor"))) {
 
       flex.MainHeader.Content.add(<BlockQueueSelector key="block-queue-selector"/>, {
-        align: "start"
+        sortOrder: 0,
+        align: "end"
       });
 
       flex.MainContainer.Content.add(<BlockQueueSelectorPanel key="block-queue-selector-panel" />);
